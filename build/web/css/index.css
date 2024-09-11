@@ -1,0 +1,62 @@
+
+.container-md {
+    background-color: #4e5b5cf5;
+}
+.header {
+      height: 80px;
+      background: url("../img/header-img.jpeg") center no-repeat;
+      width: auto;
+      background-size: cover;
+  }
+
+  .botones {
+      width: auto;
+      height: 40px;
+
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-style: italic;
+
+    color:white ;
+    border: 0px;
+
+  }
+
+  .main {
+      grid-area: main;
+      align-items: center;
+      background: url("../img/main-img-ok.jpg") top no-repeat;
+      background-size: cover;
+      width: auto;
+      height: 335px;
+  }
+
+  .footer {
+    height: 30px;
+  }
+
+  .container-fluid {
+    background: url('../img/bg.webp') center no-repeat;
+    background-size: cover;
+  }
+
+  .formulario {
+    padding: 30px;
+    background-color: whitesmoke;
+    width: auto;
+      height: auto;
+  }
+  
+  .layout{
+     width: 100%;
+
+     display: flex;
+     gap: 16px;
+
+     justify-content: center;   
+  }
+
+  .grow1{
+      flex-grow: 1;
+  }
+ 
