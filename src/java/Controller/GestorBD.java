@@ -110,7 +110,6 @@ public class GestorBD {
                 encontrado = rs.next();
             } catch (SQLException e) {
                 System.err.println("Error al ejecutar la consulta: " + e.getMessage());
-                e.printStackTrace();
             }
         
         return encontrado;

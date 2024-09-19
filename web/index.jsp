@@ -25,6 +25,23 @@
     </head>
 
     <body>
+        <script>
+            $(document).ready(function () {
+                $.ajax({
+                    url:"Competencias",
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        // Iterar sobre los datos y construir la tabla
+                        var tabla = $("#tablaProductos");
+                        $.each(data, function (index, producto) {
+                            var fila = "<tr><td>" + producto.id + "</td><td>" + producto.nombre + "</td></tr>";
+                            tabla.append(fila);
+                        });
+                    }
+                });
+            });
+        </script>
         <div class="container-fluid bg-dark">
             <div class="container-md" style="padding: 0px 50px;">
 
@@ -37,7 +54,7 @@
                     <button type="button" class="btn btn-outline-light p-2" disabled>Carga de Datos</button>
                 </div>
                 <div class="main"></div>
-                <div class="formulario">
+                <!--div class="formulario">
                     <h4>Subir JSON</h4>
 
                     <form id="myForm" onsubmit="return CargarJSON()">
@@ -46,7 +63,7 @@
                     </form>
 
 
-                </div>
+                </div-->
                 <div class="tablaClass">
                     <table class="table table-dark" id="tabla">
                         <thead>
@@ -69,62 +86,63 @@
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
         <script>
-                        const elemento = document.getElementById("file-input")
+            const elemento = document.getElementById("file-input")
 
-                                elemento.addEventListener('change', (event) => {
-                                const file = event.target.files[0];
-                                const reader = new FileReader();
-                                reader.onload = () => {
-                                const jsonContent = reader.result;
-                                const jsonData = JSON.parse(jsonContent);
-                                fetch('Personas', {
-                                method: 'POST',
-                                        headers: {
-                                        'Content-Type': 'application/json'
-                                        },
-                                        body: JSON.stringify(jsonData)
-                                })
-                                        .then(response => response.json())
-                                        .then(data => {
-                                        // Procesar    la respuesta del servidor
-                                        })
-                                        .catch(error => {
-                                        // Manejar errores
-                                        });
-                                };
-                                //////////cargar tabla
-                                const tabla = document.getElementById('tabla');
-                                jsonData.forEach(item => {
-                                const fila = document.createElement("tr");
-                                // Crear celdas para cada propiedad
-                                const celdaCat = document.createElement('td');
-                                celdaCat.textContent = item.Cat;
-                                const celdaNombre = document.createElement('td');
-                                celdaNombre.textContent = item.Co1;
-                                const celdaDNI = document.createElement('td');
-                                celdaDNI.textContent = item.Do1;
-                                const celdaEquipo = document.createElement('td');
-                                celdaEquipo.textContent = item.Equ;
-                                const celdaCiudad = document.createElement('td');
-                                celdaCiudad.textContent = item.Nro;
-                                const celdaPeso = document.createElement('td');
-                                celdaPeso.textContent = item.Lo1;
-                                // Agregar las celdas a la fila
-                                fila.appendChild(celdaCat);
-                                fila.appendChild(celdaNombre);
-                                fila.appendChild(celdaDNI);
-                                fila.appendChild(celdaEquipo);
-                                fila.appendChild(celdaCiudad);
-                                fila.appendChild(celdaPeso);
-                                // Agregar la fila a la tabla
-                                tabla.appendChild(fila);
-                                });
-                                // Ahora puedes trabajar con los datos del JSON
-                                console.log(jsonData); // Accediendo a una propiedad del JSON
-                                // ... otras operaciones con los datos
-                                };
-                                reader.readAsText(file);
-                                });</script>
+            elemento.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const jsonContent = reader.result;
+                    const jsonData = JSON.parse(jsonContent);
+                    fetch('Personas', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(jsonData)
+                    })
+                            .then(response => response.json())
+                            .then(data => {
+                                // Procesar    la respuesta del servidor
+                            })
+                            .catch(error => {
+                                // Manejar errores
+                            });
+                };
+                //////////cargar tabla
+                const tabla = document.getElementById('tabla');
+                jsonData.forEach(item => {
+                    const fila = document.createElement("tr");
+                    // Crear celdas para cada propiedad
+                    const celdaCat = document.createElement('td');
+                    celdaCat.textContent = item.Cat;
+                    const celdaNombre = document.createElement('td');
+                    celdaNombre.textContent = item.Co1;
+                    const celdaDNI = document.createElement('td');
+                    celdaDNI.textContent = item.Do1;
+                    const celdaEquipo = document.createElement('td');
+                    celdaEquipo.textContent = item.Equ;
+                    const celdaCiudad = document.createElement('td');
+                    celdaCiudad.textContent = item.Nro;
+                    const celdaPeso = document.createElement('td');
+                    celdaPeso.textContent = item.Lo1;
+                    // Agregar las celdas a la fila
+                    fila.appendChild(celdaCat);
+                    fila.appendChild(celdaNombre);
+                    fila.appendChild(celdaDNI);
+                    fila.appendChild(celdaEquipo);
+                    fila.appendChild(celdaCiudad);
+                    fila.appendChild(celdaPeso);
+                    // Agregar la fila a la tabla
+                    tabla.appendChild(fila);
+                });
+                // Ahora puedes trabajar con los datos del JSON
+                console.log(jsonData); // Accediendo a una propiedad del JSON
+                // ... otras operaciones con los datos
+                };
+                reader.readAsText(file);
+            });
+        </script>
         <script src="js/crono.js"></script>
     </body>
 
