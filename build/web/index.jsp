@@ -33,7 +33,7 @@
                     dataType: "json",
                     success: function (data) {
                         // Iterar sobre los datos y construir la tabla
-                        var tabla = $("#tablaProductos");
+                        var tabla = $("#tabla");
                         $.each(data, function (index, producto) {
                             var fila = "<tr><td>" + producto.id + "</td><td>" + producto.nombre + "</td></tr>";
                             tabla.append(fila);

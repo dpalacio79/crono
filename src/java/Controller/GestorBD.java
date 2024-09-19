@@ -16,7 +16,7 @@ import java.util.Properties;
  */
 public class GestorBD {
 
-    private static final String CONN = "jdbc:mysql://localhost:3306/cronoDB?useTimeZone=true&serverTimezone=UTC&autoReconnect=true&useSSL=false";
+    private static final String CONN = "jdbc:mysql://190.122.65.152:3306/cronoDB?useTimeZone=true&serverTimezone=UTC&autoReconnect=true&useSSL=false";
     private static final String USER = "root";
     private static final String PASS = "root";
 
