@@ -1,30 +1,29 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package Servlets;
 
 import Controller.GestorBD;
 import Model.Competencia;
 import com.google.gson.Gson;
-import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
-//import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//import com.google.gson.Gson;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author daniel
+ * @author Daniel
  */
-@WebServlet(name = "Competencias", urlPatterns = {"/Competencias"})
-public class Competencias extends HttpServlet {
+public class Prueba extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,10 +33,10 @@ public class Competencias extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Competencias</title>");
+            out.println("<title>Servlet para hacer Prueba</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Competencias at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Prueba at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -46,14 +45,13 @@ public class Competencias extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         GestorBD ges = new GestorBD();
 
         ArrayList<Competencia> compe = new ArrayList<>();
         try {
             compe = ges.BuscarCompetencias();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(Competencias.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Competenciass.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         Gson gson = new Gson();
@@ -65,6 +63,7 @@ public class Competencias extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String nombre = request.getParameter("nombre");
         String lugar = request.getParameter("lugar");
         String descrip = request.getParameter("descripcion");
@@ -74,7 +73,7 @@ public class Competencias extends HttpServlet {
         boolean respuesta = false;
         String errorBD = "";
 
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
+        //        BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
 //        StringBuilder sb = new StringBuilder();
 //
 //        String line;
@@ -99,7 +98,8 @@ public class Competencias extends HttpServlet {
                     .getLogger(Competencia.class
                             .getName()).log(Level.SEVERE, null, ex);
         }
-// request.setAttribute("listaVencidos", lista); para enviar cosas desde el servlet
+        
+        // request.setAttribute("listaVencidos", lista); para enviar cosas desde el servlet
 //
 
         if (respuesta) {
@@ -108,8 +108,14 @@ public class Competencias extends HttpServlet {
             request.setAttribute("alta", errorBD);
 
         }
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/altaCompetencia.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/altaCompetenciaa.jsp");
         rd.forward(request, response);
+        
     }
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
 }
